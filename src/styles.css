@@ -17,6 +17,7 @@
 }
 
 * { box-sizing: border-box; }
+.icon { display: inline-block; flex-shrink: 0; vertical-align: middle; }
 html { scroll-behavior: smooth; background: var(--paper); }
 body { margin: 0; min-width: 320px; background: var(--paper); }
 img { display: block; max-width: 100%; }
@@ -411,6 +412,7 @@ button, input, textarea, select { font: inherit; }
 .admin-row-actions { position: relative; }
 .admin-row-actions summary { list-style: none; padding: 7px 9px; cursor: pointer; }
 .admin-row-actions summary::-webkit-details-marker { display: none; }
+.admin-row-actions summary .icon { vertical-align: middle; }
 .admin-row-actions > div { position: absolute; z-index: 5; top: 100%; right: 0; display: flex; flex-direction: column; min-width: 145px; padding: 5px; border: 1px solid var(--line); background: #fffefa; box-shadow: 0 10px 24px rgba(30,34,28,.12); }
 .admin-row-actions > div a, .admin-row-actions > div button { padding: 9px 10px; border: 0; color: var(--ink); background: transparent; font-size: 11px; text-align: left; text-decoration: none; cursor: pointer; }
 .admin-row-actions > div a:hover, .admin-row-actions > div button:hover { background: #f0efe8; }
@@ -458,6 +460,7 @@ button, input, textarea, select { font: inherit; }
 .admin-image-actions { display: flex; flex-direction: column; gap: 5px; }
 .admin-image-actions button { padding: 4px 6px; border: 1px solid rgba(38,43,37,.16); color: #575a51; background: transparent; font-size: 9px; cursor: pointer; }
 .admin-image-actions button:disabled { opacity: .4; cursor: default; }
+.admin-image-actions button .icon { width: 13px; height: 13px; }
 .admin-image-actions .admin-delete-action { border-color: rgba(153,76,66,.2); }
 .admin-success, .admin-error, .admin-notice { padding: 13px 15px; border: 1px solid #c7d8c9; color: #3e6247; background: #eff5ef; font-size: 12px; line-height: 1.6; }
 .admin-upload-progress { padding: 11px 14px; border-left: 2px solid #728173; color: #62655c; background: #eeede6; font-size: 11px; }
