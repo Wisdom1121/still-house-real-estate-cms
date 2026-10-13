@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 import AdminApp from './features/admin/AdminApp.jsx';
+import Icon from './components/Icon.jsx';
 import { supabaseConfigured, SUPABASE_SETUP_MESSAGE } from './lib/supabase.js';
 import { formatPrice, getFeaturedProperty, getPublishedPropertyBySlug, listPublishedProperties, propertyLocation } from './features/properties/propertyService.js';
 
@@ -260,7 +261,7 @@ function ScrollSequenceHero() {
           <p className="eyebrow">A home in its element</p>
           <h1>Space to<br />come home to.</h1>
           <p className="hero-description">Thoughtful architecture. Natural light. A quieter way to live.</p>
-          <a className="hero-cta" href="/residence">Explore the residence <span aria-hidden="true">↗</span></a>
+          <a className="hero-cta" href="/residence">Explore the residence <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
         </div>
         <div className="scroll-cue" aria-hidden="true">
           <span className="scroll-line" />
@@ -303,7 +304,7 @@ function SiteHeader({ overlay = false }) {
       <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
         <a href="/residences" onClick={closeMenu}>Residences</a>
         <a href="/about" onClick={closeMenu}>Our approach</a>
-        <a className="nav-contact" href="/contact" onClick={closeMenu}>Get in touch <span aria-hidden="true">↗</span></a>
+        <a className="nav-contact" href="/contact" onClick={closeMenu}>Get in touch <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>
       </nav>
     </header>
   );
@@ -315,7 +316,7 @@ function SectionHeading({ eyebrow, title, copy, link, linkText }) {
       <div><p className="eyebrow eyebrow-dark">{eyebrow}</p><h2>{title}</h2></div>
       <div className="section-heading-aside">
         {copy && <p>{copy}</p>}
-        {link && <a className="text-link" href={link}>{linkText || 'Discover more'} <span aria-hidden="true">↗</span></a>}
+        {link && <a className="text-link" href={link}>{linkText || 'Discover more'} <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a>}
       </div>
     </div>
   );
@@ -327,7 +328,7 @@ function ImageCard({ frame, label, title, copy, href = '/residence', tall = fals
       <img src={imageAt(frame)} alt={label} loading="lazy" />
       <span className="image-card-shade" />
       <span className="image-card-copy"><span className="card-kicker">{label}</span><strong>{title}</strong>{copy && <span className="card-description">{copy}</span>}</span>
-      <span className="card-arrow" aria-hidden="true">↗</span>
+      <span className="card-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span>
     </a>
   );
 }
@@ -341,7 +342,7 @@ function HomePage() {
         <p className="eyebrow eyebrow-dark">A different kind of real estate</p>
         <div className="intro-grid">
           <h2>Good homes make room for life.</h2>
-          <div><p>We bring considered homes and the people who love them together. Each residence is chosen for the way it feels to live in—not just the way it looks.</p><a className="text-link" href="/about">Get to know Still House <span aria-hidden="true">↗</span></a></div>
+          <div><p>We bring considered homes and the people who love them together. Each residence is chosen for the way it feels to live in—not just the way it looks.</p><a className="text-link" href="/about">Get to know Still House <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div>
         </div>
         <div className="intro-rule"><span>01</span><span>Considered living, from first look to front door</span><span>Los Angeles · California</span></div>
       </section>
@@ -361,13 +362,13 @@ function HomePage() {
 
       <section className="approach-band page-wrap">
         <span className="approach-mark" aria-hidden="true">S.</span>
-        <div><p className="eyebrow">The Still House approach</p><h2>Real estate, with a little more <em>feeling.</em></h2><p>We believe finding a home should feel personal, thoughtful and unrushed. Our small team brings care to every conversation and clarity to every step.</p><a className="button button-light" href="/about">How we work <span aria-hidden="true">↗</span></a></div>
+        <div><p className="eyebrow">The Still House approach</p><h2>Real estate, with a little more <em>feeling.</em></h2><p>We believe finding a home should feel personal, thoughtful and unrushed. Our small team brings care to every conversation and clarity to every step.</p><a className="button button-light" href="/about">How we work <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div>
         <span className="approach-note">A more personal<br />way home.</span>
       </section>
 
       <section className="inquiry-section">
         <div className="inquiry-image" style={{ backgroundImage: `url(${imageAt(1)})` }} role="img" aria-label="Soft evening light across a contemporary home" />
-        <div className="inquiry-copy"><p className="eyebrow eyebrow-dark">Your next chapter</p><h2>Let's find a place<br />that feels like you.</h2><p>Tell us what home means to you. We’ll help you take it from there.</p><a className="button button-dark" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a></div>
+        <div className="inquiry-copy"><p className="eyebrow eyebrow-dark">Your next chapter</p><h2>Let's find a place<br />that feels like you.</h2><p>Tell us what home means to you. We’ll help you take it from there.</p><a className="button button-dark" href="/contact">Start a conversation <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div>
       </section>
     </>
   );
@@ -402,7 +403,7 @@ function FeaturedResidence() {
         <a className="featured-image" href={`/properties/${property.slug}`}>
           {property.cover_image && <img src={property.cover_image.url} alt={property.cover_image.alt_text || property.title} loading="lazy" />}
           {!property.cover_image && <span className="property-image-placeholder">Images coming soon</span>}
-          <span className="featured-tag">{propertyLocation(property) || 'Featured residence'} <b>↗</b></span>
+          <span className="featured-tag">{propertyLocation(property) || 'Featured residence'} <b><Icon name="arrow-up-right" /></b></span>
         </a>
         <div className="feature-meta"><span>{property.title}</span><span>{formatPrice(property)}</span><span>{property.bedrooms ?? '—'} bedrooms · {property.property_type}</span></div>
       </>}
@@ -450,10 +451,10 @@ function ResidencesPage() {
         {status === 'ready' && properties.map((property) => (
           <a className="listing-card" href={`/properties/${property.slug}`} key={property.id}>
             <div className="listing-card-image">{property.cover_image ? <img src={property.cover_image.url} alt={property.cover_image.alt_text || property.title} loading="lazy" /> : <span className="property-image-placeholder">Images coming soon</span>}<span className="listing-status">{property.is_featured ? 'Featured residence' : property.listing_type === 'rent' ? 'For rent' : 'For sale'}</span></div>
-            <div className="listing-card-info"><div><p className="eyebrow eyebrow-dark">{propertyLocation(property) || property.property_type}</p><h2>{property.title}</h2><p>{property.description}</p><p className="property-price">{formatPrice(property)}</p><span className="property-specs">{property.bedrooms ?? '—'} beds · {property.bathrooms ?? '—'} baths · {property.area_sqm ? `${property.area_sqm} m²` : 'Area on request'}</span></div><span className="listing-arrow" aria-hidden="true">↗</span></div>
+            <div className="listing-card-info"><div><p className="eyebrow eyebrow-dark">{propertyLocation(property) || property.property_type}</p><h2>{property.title}</h2><p>{property.description}</p><p className="property-price">{formatPrice(property)}</p><span className="property-specs">{property.bedrooms ?? '—'} beds · {property.bathrooms ?? '—'} baths · {property.area_sqm ? `${property.area_sqm} m²` : 'Area on request'}</span></div><span className="listing-arrow" aria-hidden="true"><Icon name="arrow-up-right" /></span></div>
           </a>
         ))}
-        {count > pageSize && <div className="property-pagination"><button className="text-link" type="button" disabled={page <= 1} onClick={() => setPage((value) => value - 1)}>← Previous</button><span>Page {page} of {Math.ceil(count / pageSize)}</span><button className="text-link" type="button" disabled={page >= Math.ceil(count / pageSize)} onClick={() => setPage((value) => value + 1)}>Next →</button></div>}
+        {count > pageSize && <div className="property-pagination"><button className="text-link" type="button" disabled={page <= 1} onClick={() => setPage((value) => value - 1)}><Icon name="arrow-left" /> Previous</button><span>Page {page} of {Math.ceil(count / pageSize)}</span><button className="text-link" type="button" disabled={page >= Math.ceil(count / pageSize)} onClick={() => setPage((value) => value + 1)}>Next <Icon name="arrow-right" /></button></div>}
         <p className="collection-note">We keep our collection intentionally small. Every home is selected with care, and every introduction begins with a conversation.</p>
       </section>
       <ContactBanner />
@@ -474,13 +475,13 @@ function ResidencePage({ slug }) {
     return () => { active = false; };
   }, [slug]);
   if (status === 'loading') return <section className="property-detail-state" role="status">Loading residence…</section>;
-  if (!property) return <section className="property-detail-state"><h1>{status === 'missing' ? 'Residence not found.' : 'Residences are being prepared.'}</h1><p>{status === 'error' ? error : supabaseConfigured ? 'This home may no longer be available.' : SUPABASE_SETUP_MESSAGE}</p><a className="text-link" href="/residences">Browse residences <span aria-hidden="true">↗</span></a></section>;
+  if (!property) return <section className="property-detail-state"><h1>{status === 'missing' ? 'Residence not found.' : 'Residences are being prepared.'}</h1><p>{status === 'error' ? error : supabaseConfigured ? 'This home may no longer be available.' : SUPABASE_SETUP_MESSAGE}</p><a className="text-link" href="/residences">Browse residences <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></section>;
   const gallery = property.property_images || [];
   const cover = property.cover_image;
   return (
     <>
-      <div className="residence-hero">{cover && <img src={cover.url} alt={cover.alt_text || property.title} />}<div><p className="eyebrow">{property.is_featured ? 'Featured residence' : `${property.listing_type === 'rent' ? 'For rent' : 'For sale'} · ${property.property_type}`}</p><h1>{property.title}</h1><a className="button button-light" href="/contact">Arrange a private viewing <span aria-hidden="true">↗</span></a></div></div>
-      <section className="residence-overview page-wrap"><div><p className="eyebrow eyebrow-dark">{propertyLocation(property) || 'A considered place to land'}</p><h2>{formatPrice(property)}<br />{property.bedrooms ?? '—'} bedrooms</h2></div><div><p>{property.description}</p><p>{[property.area_sqm && `${property.area_sqm} m² interior`, property.bathrooms != null && `${property.bathrooms} bathrooms`, property.parking_spaces != null && `${property.parking_spaces} parking spaces`].filter(Boolean).join(' · ')}</p><a className="text-link" href="/contact">Ask about this residence <span aria-hidden="true">↗</span></a></div></section>
+      <div className="residence-hero">{cover && <img src={cover.url} alt={cover.alt_text || property.title} />}<div><p className="eyebrow">{property.is_featured ? 'Featured residence' : `${property.listing_type === 'rent' ? 'For rent' : 'For sale'} · ${property.property_type}`}</p><h1>{property.title}</h1><a className="button button-light" href="/contact">Arrange a private viewing <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></div>
+      <section className="residence-overview page-wrap"><div><p className="eyebrow eyebrow-dark">{propertyLocation(property) || 'A considered place to land'}</p><h2>{formatPrice(property)}<br />{property.bedrooms ?? '—'} bedrooms</h2></div><div><p>{property.description}</p><p>{[property.area_sqm && `${property.area_sqm} m² interior`, property.bathrooms != null && `${property.bathrooms} bathrooms`, property.parking_spaces != null && `${property.parking_spaces} parking spaces`].filter(Boolean).join(' · ')}</p><a className="text-link" href="/contact">Ask about this residence <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div></section>
       {gallery.length > 0 && <section className="gallery-section page-wrap"><SectionHeading eyebrow="A closer look" title="Light moves through every room." copy="Explore the spaces and details of this residence." /><div className="gallery-grid">{gallery.map((image) => <figure key={image.id}><img src={image.url} alt={image.alt_text || property.title} loading="lazy" />{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div></section>}
       {property.amenities?.length > 0 && <section className="detail-strip property-amenities"><div><span>FEATURES</span><strong>Details that matter.</strong><p>{property.amenities.join(' · ')}</p></div></section>}
       <ContactBanner />
@@ -508,7 +509,7 @@ function ContactPage() {
   return (
     <>
       <section className="contact-page page-wrap"><div className="contact-copy"><p className="eyebrow eyebrow-dark">Get in touch</p><h1>Every good move<br />starts somewhere.</h1><p>Tell us a little about what you’re looking for. We’ll be in touch to continue the conversation.</p><div className="contact-direct"><span>Prefer a note?</span><a href="mailto:hello@stillhouse.example">hello@stillhouse.example</a><small>Replace this demo address with your preferred contact email.</small></div></div>
-        <div className="contact-form-wrap"><p className="eyebrow eyebrow-dark">Start a conversation</p>{submitted ? <div className="form-success" role="status"><span>Thank you.</span><p>Your message has been recorded in this preview. Connect the form to an inbox to receive inquiries.</p><button className="text-link" type="button" onClick={() => setSubmitted(false)}>Send another message ↗</button></div> : <form className="contact-form" onSubmit={handleSubmit}><label>Your name<input name="name" autoComplete="name" required placeholder="Name" /></label><label>Email address<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label><label>What brings you to us?<select name="interest" defaultValue=""><option value="" disabled>Select one</option><option>I'm looking for a home</option><option>I have a home to sell</option><option>I'd like to learn more about Still House</option></select></label><label>A little more (optional)<textarea name="message" rows="4" placeholder="Tell us what you're hoping to find…" /></label><button className="button button-dark" type="submit">Send inquiry <span aria-hidden="true">↗</span></button><small>This is a front-end preview; the form is not connected to an inbox yet.</small></form>}</div>
+        <div className="contact-form-wrap"><p className="eyebrow eyebrow-dark">Start a conversation</p>{submitted ? <div className="form-success" role="status"><span>Thank you.</span><p>Your message has been recorded in this preview. Connect the form to an inbox to receive inquiries.</p><button className="text-link" type="button" onClick={() => setSubmitted(false)}>Send another message <Icon name="arrow-up-right" /></button></div> : <form className="contact-form" onSubmit={handleSubmit}><label>Your name<input name="name" autoComplete="name" required placeholder="Name" /></label><label>Email address<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label><label>What brings you to us?<select name="interest" defaultValue=""><option value="" disabled>Select one</option><option>I'm looking for a home</option><option>I have a home to sell</option><option>I'd like to learn more about Still House</option></select></label><label>A little more (optional)<textarea name="message" rows="4" placeholder="Tell us what you're hoping to find…" /></label><button className="button button-dark" type="submit">Send inquiry <span aria-hidden="true"><Icon name="arrow-up-right" /></span></button><small>This is a front-end preview; the form is not connected to an inbox yet.</small></form>}</div>
       </section>
       <section className="contact-note"><p>“The right place has a way of making the next step feel clear.”</p><span>Still House · Real estate, considered</span></section>
     </>
@@ -516,11 +517,11 @@ function ContactPage() {
 }
 
 function ContactBanner() {
-  return <section className="contact-banner page-wrap"><div><p className="eyebrow">A good place to begin</p><h2>Tell us what home<br />means to you.</h2></div><a className="button button-light" href="/contact">Let's talk <span aria-hidden="true">↗</span></a></section>;
+  return <section className="contact-banner page-wrap"><div><p className="eyebrow">A good place to begin</p><h2>Tell us what home<br />means to you.</h2></div><a className="button button-light" href="/contact">Let's talk <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></section>;
 }
 
 function SiteFooter() {
-  return <footer className="site-footer"><div className="footer-top"><a className="wordmark footer-wordmark" href="/"><span className="wordmark-mark" aria-hidden="true">S</span><span>STILL HOUSE<small>REAL ESTATE · EST. 2012</small></span></a><p>A more personal<br />way home.</p><a className="footer-contact" href="/contact">Start a conversation <span aria-hidden="true">↗</span></a></div><div className="footer-bottom"><span>© 2026 Still House Real Estate</span><div><a href="/residences">Residences</a><a href="/about">Our approach</a><a href="/contact">Contact</a></div><span>Made for living.</span></div></footer>;
+  return <footer className="site-footer"><div className="footer-top"><a className="wordmark footer-wordmark" href="/"><span className="wordmark-mark" aria-hidden="true">S</span><span>STILL HOUSE<small>REAL ESTATE · EST. 2012</small></span></a><p>A more personal<br />way home.</p><a className="footer-contact" href="/contact">Start a conversation <span aria-hidden="true"><Icon name="arrow-up-right" /></span></a></div><div className="footer-bottom"><span>© 2026 Still House Real Estate</span><div><a href="/residences">Residences</a><a href="/about">Our approach</a><a href="/contact">Contact</a></div><span>Made for living.</span></div></footer>;
 }
 
 function App() {
